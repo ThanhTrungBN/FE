@@ -1,0 +1,10 @@
+.user-message-content {
+    max-width: 90%; 
+    word-break: break-word; 
+    overflow-wrap: break-word; 
+}
+#response-content-container{
+    max-width: 90%; 
+    word-break: break-word; 
+    overflow-wrap: break-word;
+}
