@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Optinal from '../icons/Optinal';
 const Chatname = ({ chatinfo }) => {
-    console.log(chatinfo[0].id)
     return (
         <>
             <div className="w-full pl-2.5 text-xs text-gray-500 dark:text-gray-500 font-medium pt-5 pb-1.5">

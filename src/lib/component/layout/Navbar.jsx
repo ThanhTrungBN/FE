@@ -4,20 +4,21 @@ import Selector from './Selector';
 import ChevronDown from '../icons/ChevronDown';
 import Plus from '../icons/Plus';
 import Control from '../icons/Control'
-const Navbar = function () {
-    const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const Navbar = function ({ isSidebarOpen, toggleSidebar }) {
+    console.log(isSidebarOpen)
+    const [isUserMenu, setIsUserMenu] = useState(false);
     const [isleSelector, setToggleSelector] = useState(false);
     const sidebarRef = useRef(null);
     const selectorRef = useRef(null)
-    const toggleSidebar = () => {
-        setIsSidebarOpen(!isSidebarOpen);
+    const toggleSidebarMenu = () => {
+        setIsUserMenu(!isUserMenu);
     };
     const toggleSelector = () => {
         setToggleSelector(!isleSelector);
     };
     const handleClickOutside = (event) => {
         if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-            setIsSidebarOpen(false);
+            setIsUserMenu(false);
         }
         if (selectorRef.current && !selectorRef.current.contains(event.target)) {
             setToggleSelector(false);
@@ -39,27 +40,27 @@ const Navbar = function () {
                 <div className="bg-gradient-to-b via-50% from-white via-white to-transparent dark:from-gray-900 dark:via-gray-900 dark:to-transparent pointer-events-none absolute inset-0 -bottom-7 z-[-1] blur"></div>
                 <div className="flex max-w-full w-full mx-auto px-2 pt-0.5 bg-transparent">
                     <div className="flex items-center w-full max-w-full">
-                        <div className="md:hidden mr-2 self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
+                        <div className={`${isSidebarOpen ? 'md:hidden mr-2 self-start flex flex-none items-center text-gray-600 dark:text-gray-400' : 'mr-2 self-start flex flex-none items-center text-gray-600 dark:text-gray-400'} `}>
                             <button
+                                onClick={toggleSidebar}
                                 id="sidebar-toggle-button"
                                 className="cursor-pointer px-2 py-2 flex rounded-xl hover:bg-gray-50 dark:hover:bg-gray-850 transition"
-                                aria-label="Toggle Sidebar"
-                            >
+                                aria-label="Toggle Sidebar">
                                 <div className="m-auto self-center">
-                                        <svg
-                                            xmlns="http://www.w3.org/2000/svg"
-                                            fill="none"
-                                            viewBox="0 0 24 24"
-                                            strokeWidth="2"
-                                            stroke="currentColor"
-                                            className="size-5"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-                                            ></path>
-                                        </svg>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth="2"
+                                        stroke="currentColor"
+                                        className="size-5"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+                                        ></path>
+                                    </svg>
                                 </div>
                             </button>
                         </div>
@@ -77,7 +78,7 @@ const Navbar = function () {
                                                 aria-label="Chọn mô hình">
                                                 <div className="flex w-full text-left px-0.5 outline-none bg-transparent truncate text-lg justify-between font-medium placeholder-gray-400 focus:outline-none svelte-141e0sl">
                                                     Arena Model
-                                                    <ChevronDown/>
+                                                    <ChevronDown />
                                                 </div>
                                             </button>
                                         </div>
@@ -85,7 +86,7 @@ const Navbar = function () {
                                     <div className="self-center mx-1 disabled:text-gray-600 disabled:hover:text-gray-600 -translate-y-[0.5px]">
                                         <div aria-label="Thêm model" className="flex">
                                             <button className="" aria-label="Add Model">
-                                                <Plus/>
+                                                <Plus />
                                             </button>
                                         </div>
                                     </div>
@@ -102,7 +103,7 @@ const Navbar = function () {
                                     aria-label="Controls"
                                 >
                                     <div className="m-auto self-center">
-                                       <Control/>
+                                        <Control />
                                     </div>
                                 </button>
                             </div>
@@ -137,9 +138,10 @@ const Navbar = function () {
                                 <button
                                     className="select-none flex rounded-xl p-1.5 w-full hover:bg-gray-50 dark:hover:bg-gray-850 transition"
                                     aria-label="User Menu"
-                                    onClick={toggleSidebar}>
+                                    onClick={toggleSidebarMenu}
+                                >
                                     <div className="self-center">
-                                        <img src="../imgs/avt.png" alt="" className="size-6 object-cover rounded-full"/>
+                                        <img src="../imgs/avt.png" alt="" className="size-6 object-cover rounded-full" />
                                     </div>
                                 </button>
                             </div>
@@ -147,12 +149,12 @@ const Navbar = function () {
                     </div>
                 </div>
             </div>
-            {isSidebarOpen && (
+            {isUserMenu && (
                 <UserTab ref={sidebarRef} style={customStyle} />
             )}
             {isleSelector
                 && (
-                    <Selector ref={selectorRef}/>
+                    <Selector ref={selectorRef} />
                 )
             }
         </>

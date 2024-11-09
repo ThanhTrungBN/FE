@@ -11,7 +11,6 @@ const Chat = function () {
     const value = event.target.innerText;
     setInputValue(value);
   };
-
   const handleSendMessage = () => {
     if (inputValue.trim()) {
       const chatId = `1`;
@@ -43,10 +42,7 @@ const Chat = function () {
         style={{ display: 'flex', flexDirection: 'row', height: '100%', overflow: 'hidden', width: '100%', }}
       >
         <div data-pane="" data-pane-id="bvaZjjpRCy" data-pane-group-id="KZvIm-6wto" className="h-full flex w-full relative"
-          style={{
-            flex: '100 1 0px',
-            overflow: 'hidden',
-          }}>
+          style={{ flex: '100 1 0px', overflow: 'hidden', }}>
           <div className="flex flex-col flex-auto z-10 w-full">
             <div className="overflow-auto w-full h-full flex items-center">
               <div className="m-auto w-full max-w-6xl px-2 xl:px-20 translate-y-6 py-24 text-center">
@@ -62,8 +58,7 @@ const Chat = function () {
                                 src="../imgs/favicon.png"
                                 className="size-9 sm:size-10 rounded-full border-[1px] border-gray-200 dark:border-none"
                                 alt="logo"
-                                draggable="false"
-                              />
+                                draggable="false" />
                             </button>
                           </div>
                         </div>
@@ -108,7 +103,7 @@ const Chat = function () {
                 <div className="mx-auto max-w-2xl font-primary">
                   <div className="mx-5">
                     <div className="mb-1 flex gap-1 text-sm font-medium items-center text-gray-400 dark:text-gray-600">
-                      <Thunder />{' '}
+                      <Thunder />
                       Gợi ý một số mẫu prompt
                     </div>
                     <div className="h-40 max-h-full overflow-auto scrollbar-none ">
@@ -168,7 +163,7 @@ const Chat = function () {
                             Grammar check
                           </div>
                           <div className="text-xs text-gray-500 font-normal line-clamp-1">
-                            rewrite it for better readability{' '}
+                            rewrite it for better readability
                           </div>
                         </div>
                       </button>
@@ -194,10 +189,7 @@ const Chat = function () {
           data-pane-id="unViqOToNw"
           data-pane-group-id="KZvIm-6wto"
           className="pt-8"
-          style={{
-            flex: '0 1 0px',
-            overflow: 'hidden',
-          }}
+          style={{ flex: '0 1 0px', overflow: 'hidden'}}
         ></div>
       </div>
     </>

@@ -1,12 +1,13 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-const Tab = function () {
+const Tab = function ({ isSidebarOpen, toggleSidebar }) {
     return (
         <>
             <div className="px-3.5 my-2 bg-transparent backdrop-blur-xl">
                 <div className="flex items-center gap-1">
-                    <div className="md:hidden mr-1 self-center flex flex-none items-center">
+                    <div className={`${isSidebarOpen ? 'md:hidden mr-1 self-center flex flex-none items-center' : 'mr-1 self-center flex flex-none items-center'}`}>
                         <button
+                            onClick={toggleSidebar}
                             id="sidebar-toggle-button"
                             className="cursor-pointer p-1.5 flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition"
                             aria-label="Toggle Sidebar"

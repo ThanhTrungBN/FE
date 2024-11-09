@@ -9,17 +9,19 @@ import MagnifyingGlass from '../icons/MagnifyingGlass';
 import ChevronDown from '../icons/ChevronDown';
 import Optinal from '../icons/Optinal';
 import UserTab from './UserTab';
-const Sidebar = function () {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+const Sidebar = ({ isSidebarOpen, toggleSidebar })=> {
+  const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const sidebarRef = useRef(null);
+  const userMenuRef = useRef(null)
   const { id } = useParams();
   const [chatinfo, setChatinfo] = useState([]);
-  const toggleSidebar = () => {
-    setIsSidebarOpen(!isSidebarOpen);
+  const toggleSidebarMenu = () => {
+    setUserMenuOpen(!isUserMenuOpen);
   };
+
   const handleClickOutside = (event) => {
-    if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
-      setIsSidebarOpen(false);
+    if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
+      setUserMenuOpen(false);
     }
   };
   const chats = JSON.parse(localStorage.getItem('chats')) || [];
@@ -34,11 +36,9 @@ const Sidebar = function () {
   }, []);
   return (
     <>
-      <div
-        id="sidebar"
-        className="h-screen max-h-[100dvh] min-h-screen select-none md:relative w-[260px] max-w-[260px] bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-200 text-sm transition fixed z-50 top-0 left-0 overflow-x-hidden"
-        data-state="true"
-      >
+      <div id="sidebar"
+        className={`h-screen max-h-[100dvh] min-h-screen select-none md:relative w-[260px] max-w-[260px] bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-200 text-sm transition fixed z-50 top-0 left-0 overflow-x-hidden ${isSidebarOpen ? '' : 'hidden'}`}
+        data-state={isSidebarOpen}>
         <div className="py-2.5 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] overflow-x-hidden z-50 ">
           <div className="px-2.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400">
             <a
@@ -62,8 +62,8 @@ const Sidebar = function () {
                 <PencilSquare />
               </div>
             </a>{' '}
-            <button className="cursor-pointer px-2 py-2 flex rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition">
-              <div className="m-auto self-center">
+            <button className="cursor-pointer px-2 py-2 flex rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition" onClick={toggleSidebar}>
+              <div className="m-auto self-center" >
                 <MenuLines></MenuLines>
               </div>
             </button>
@@ -190,7 +190,7 @@ const Sidebar = function () {
           <div className="px-2">
             <div className="flex flex-col font-primary">
               <div
-                onClick={toggleSidebar}
+                onClick={toggleSidebarMenu}
                 aria-controls="1eV8rSjjHx"
                 aria-expanded="false"
                 data-state="closed"
@@ -210,8 +210,8 @@ const Sidebar = function () {
                   <div className="self-center font-medium">trung</div>
                 </button>
               </div>{' '}
-              {isSidebarOpen && (
-                <UserTab ref={sidebarRef} />
+              {isUserMenuOpen && (
+                <UserTab ref={userMenuRef} />
               )}
             </div>
           </div>

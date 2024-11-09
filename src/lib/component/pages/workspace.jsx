@@ -2,14 +2,14 @@ import React, { useState, useRef, useEffect } from 'react';
 import Tab from '../layout/Tab'
 import Sidebar from '../layout/Sidebar';
 import Knowledge from '../workspace/Knowledge';
-const Knowkedges = function () {
+const Knowkedges = function ({ isSidebarOpen, toggleSidebar }) {
     return (
         <>
             <div style={{ display: 'flex', height: '100%', width: '100%', }}>
-                <Sidebar />
+                <Sidebar isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />
                 <div
-                    className="h-screen max-h-[100dvh] w-full flex flex-col md:max-w-[calc(100%-260px)] md:overflow-hidden">
-                    <Tab />
+        className={`h-screen max-h-[100dvh] ${isSidebarOpen ? 'w-full flex flex-col md:max-w-[calc(100%-260px)] md:overflow-hidden' : 'w-full max-w-full flex flex-col'}`}>
+                    <Tab isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar}/>
                     <Knowledge />
                 </div>
             </div>
