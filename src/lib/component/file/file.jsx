@@ -8,7 +8,7 @@ const File = ({ fileInfo, onClick, onDelete }) => {
         <div className="flex overflow-y-auto h-full w-full scrollbar-hidden text-xs" onClick={onClick}>
             <div className="max-h-full flex flex-col w-full">
                 <div className="mt-1 px-2">
-                    <button
+                    <div
                         className="relative group p-1.5 w-full flex items-center bg-transparent hover:bg-gray-50 dark:hover:bg-gray-850 transition rounded-2xl text-left"
                         type="button">
                         <div className="p-3 bg-black/20 dark:bg-white/10 text-white rounded-xl">
@@ -32,7 +32,7 @@ const File = ({ fileInfo, onClick, onDelete }) => {
                                 <Close />
                             </button>
                         </div>
-                    </button>
+                    </div>
                 </div>
             </div>
         </div>

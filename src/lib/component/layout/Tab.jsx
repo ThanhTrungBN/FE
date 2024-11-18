@@ -10,8 +10,7 @@ const Tab = function ({ isSidebarOpen, toggleSidebar }) {
                             onClick={toggleSidebar}
                             id="sidebar-toggle-button"
                             className="cursor-pointer p-1.5 flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition"
-                            aria-label="Toggle Sidebar"
-                        >
+                            aria-label="Toggle Sidebar">
                             <div className="m-auto self-center">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"

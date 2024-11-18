@@ -8,6 +8,7 @@ import Infoknowledge from './lib/component/pages/infoknowledge.jsx';
 import Knowkedges from './lib/component/pages/workspace.jsx';
 import Models from './lib/component/pages/models.jsx';
 import Chatbox from './lib/component/pages/chatbox.jsx';
+import SettingLayout from './lib/component/layout/setting.jsx';
 const App = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
@@ -18,6 +19,7 @@ const App = () => {
     <Router>
       <Routes>
         <Route path="/auth" element={<Auth />} />
+        <Route path="/setting" element={<SettingLayout />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Page isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />
         <Route path="/chat/:id" element={<Chatbox isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />

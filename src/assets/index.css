@@ -1,10 +1,47 @@
 .user-message-content {
-    max-width: 90%; 
-    word-break: break-word; 
-    overflow-wrap: break-word; 
-}
-#response-content-container{
-    max-width: 90%; 
-    word-break: break-word; 
+    max-width: 90%;
+    word-break: break-word;
     overflow-wrap: break-word;
+}
+
+#response-content-container {
+    max-width: 90%;
+    word-break: break-word;
+    overflow-wrap: break-word;
+}
+
+/* Thêm vào CSS của bạn nếu cần */
+.scrollbar-custom::-webkit-scrollbar {
+    width: 8px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #6b7280;
+    /* Màu thanh cuộn cho light mode */
+    border-radius: 8px;
+}
+
+.dark .scrollbar-custom::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    /* Màu thanh cuộn cho dark mode */
+}
+
+#messages-container::-webkit-scrollbar {
+    width: 8px;
+    /* Độ rộng của thanh cuộn */
+}
+
+#messages-container::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* Ẩn track */
+}
+
+#messages-container::-webkit-scrollbar-thumb {
+    background-color: #4b5563;
+    border-radius: 10px;
+    border: none;
 }

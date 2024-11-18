@@ -22,8 +22,7 @@ const Knowledge = function () {
 
     };
     useEffect(() => {
-        const storedData = JSON.parse(localStorage.getItem("Knowledge")) || [];
-        setKnowledgeData(storedData);
+        
     }, []);
     return (
         <>

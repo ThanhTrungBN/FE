@@ -36,5 +36,8 @@ export default {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography')],
+  plugins: [
+    require('@tailwindcss/typography'), // Plugin typography
+    require('tailwind-scrollbar')({ nocompatible: true }),
+  ],
 };

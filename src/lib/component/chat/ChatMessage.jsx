@@ -10,20 +10,21 @@ import Like from '../icons/Like'
 import Reanswer from '../icons/Reanswer'
 import Dislike from '../icons/Dislike'
 import Requestion from '../icons/Requestion';
+import Filesidebar from '../file/filesidebar';
 const ChatMessage = function () {
     const [inputValue, setInputValue] = useState('');
     const [response, setResponse] = useState('');
     const [messages, setMessages] = useState([]);
+    const [onlineSearch, setOnlineSearch] = useState(false)
     const inputRef = useRef(null);
-    const handleInputChange = (e) => {
-        const value = e.target.innerText;
-        setInputValue(value);
-        console.log(inputValue);
+    const handleInputChange = (newInputValue) => {
+        console.log(newInputValue);
+        setInputValue(newInputValue);
     };
     const handleSendMessage = () => {
         if (inputValue.trim()) {
             const chatId = "1";
-            const mockChatData = mockData(); 
+            const mockChatData = mockData();
             const matchedData = mockChatData.messages.find(item => item.question === inputValue);
             const newResponse = matchedData ? matchedData.answer : "Xin lỗi, tôi không hiểu câu hỏi của bạn.";
             const newMessage = { question: inputValue, answer: newResponse };
@@ -66,8 +67,7 @@ const ChatMessage = function () {
                 <div data-pane="" data-pane-id="6HelleE3Af" data-pane-group-id="ufvLlxERjX" className="h-full flex w-full relative"
                     style={{ flex: "100 1 0px", overflow: "hidden", }}>
                     <div className="flex flex-col flex-auto z-10 w-full">
-                        <div className="pb-2.5 flex flex-col justify-between w-full flex-auto overflow-auto h-0 max-w-full z-10 scrollbar-hidden"
-                            id="messages-container">
+                        <div className="pb-2.5 flex flex-col justify-between w-full flex-auto overflow-auto h-0 max-w-full z-10 scrollbar-hidden dark:scrollbar-thumb-gray-800 dark:scrollbar-track-gray-800" id="messages-container">
                             <div className="h-full w-full flex flex-col">
                                 <div className="h-full flex pt-8">
                                     <div className="w-full pt-2">
@@ -78,17 +78,29 @@ const ChatMessage = function () {
                                                         id="message-f3df74b9-a9eb-41ea-834b-38149062beba">
                                                         <div className="flex-auto w-0 max-w-full pl-1">
                                                             <div className="chat-user w-full min-w-full markdown-prose">
+                                                                {console.log(msg.fileInfo)}
+                                                                {msg.fileInfo && msg.fileInfo.length > 0 && (
+                                                                    msg.fileInfo.map((fileInfo, fileIndex) => (
+                                                                        <div className='mt-2.5 mb-1 w-full flex flex-col justify-end gap-1 flex-wrap'>
+                                                                            <div className='self-end'>
+                                                                                <Filesidebar key={fileIndex} fileInfo={fileInfo} />
+                                                                            </div>
+                                                                        </div>
+                                                                    ))
+                                                                )}
                                                                 <div className="w-full" >
                                                                     <div className="flex justify-end pb-1">
-                                                                        <div className="rounded-3xl max-w-[90%] px-5 py-2 bg-gray-50 dark:bg-gray-850 user-message-content">
+                                                                        <div className="rounded-3xl max-w-[90%] px-5 py-2 bg-gray-50 dark:bg-gray-850 user-message-content dark:text-white">
                                                                             <p>{msg.question}</p>
                                                                         </div>
                                                                     </div>
                                                                     <div className="flex justify-end text-gray-600 dark:text-gray-500">
-                                                                        <div aria-label="Chỉnh sửa" className="flex"><button
-                                                                            className="invisible group-hover:visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition edit-user-message-button">
-                                                                            <Pencil />
-                                                                        </button></div>
+                                                                        <div aria-label="Chỉnh sửa" className="flex">
+                                                                            <button
+                                                                                className="invisible group-hover:visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition edit-user-message-button">
+                                                                                <Pencil />
+                                                                            </button>
+                                                                        </div>
                                                                         <div aria-label="Sao chép" className="flex">
                                                                             <button
                                                                                 className="invisible group-hover:visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition">
@@ -108,7 +120,7 @@ const ChatMessage = function () {
                                                             className="size-8 object-cover rounded-full -translate-y-[1px]"
                                                             alt="profile" draggable="false" /></div>
                                                         <div className="flex-auto w-0 pl-1">
-                                                            <div className="self-center font-semibold mb-0.5 line-clamp-1 contents">Arena
+                                                            <div className="self-center font-semibold mb-0.5 line-clamp-1 dark:text-white contents">Arena
                                                                 Model <span
                                                                     className="self-center invisible group-hover:visible text-gray-400 text-xs font-medium uppercase ml-0.5 -mt-0.5">7:53
                                                                     am</span></div>
@@ -116,7 +128,7 @@ const ChatMessage = function () {
                                                                 <div
                                                                     className="chat-assistant w-full min-w-full markdown-prose svelte-icqdsw">
                                                                     <div>
-                                                                        <div className="w-full flex flex-col relative"
+                                                                        <div className="w-full flex flex-col relative dark:text-white"
                                                                             id="response-content-container">
                                                                             <div>
                                                                                 <p>{msg.answer}</p>
@@ -139,7 +151,8 @@ const ChatMessage = function () {
                                                                                             </path>
                                                                                         </svg>
                                                                                         <div className="shrink-0">Ask</div>
-                                                                                    </button> <button
+                                                                                    </button> 
+                                                                                    <button
                                                                                         className="px-1 hover:bg-gray-50 dark:hover:bg-gray-800 rounded flex items-center gap-1 min-w-fit"><svg
                                                                                             xmlns="http://www.w3.org/2000/svg"
                                                                                             fill="none" viewBox="0 0 24 24"
@@ -159,17 +172,22 @@ const ChatMessage = function () {
                                                                 </div>
                                                                 <div
                                                                     className="flex justify-start overflow-x-auto buttons text-gray-600 dark:text-gray-500 mt-0.5 svelte-icqdsw">
-                                                                    <div aria-label="Chỉnh sửa" className="flex"><button
-                                                                        className="visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition">
-                                                                        <PencilSolid />
-                                                                    </button></div>
-                                                                    <div aria-label="Sao chép" className="flex"><button
-                                                                        className="visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition copy-response-button">
-                                                                        <Copy /></button></div>
-                                                                    <div aria-label="Đọc ra loa" className="flex"><button
-                                                                        id="speak-button-dbf59901-ee3c-4097-87f1-b66e68b900ba"
-                                                                        className="visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition">
-                                                                        <Read /></button></div>
+                                                                    <div aria-label="Chỉnh sửa" className="flex">
+                                                                        <button
+                                                                            className="visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition">
+                                                                            <PencilSolid />
+                                                                        </button></div>
+                                                                    <div aria-label="Sao chép" className="flex">
+                                                                        <button
+                                                                            className="visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition copy-response-button">
+                                                                            <Copy />
+                                                                        </button></div>
+                                                                    <div aria-label="Đọc ra loa" className="flex">
+                                                                        <button
+                                                                            id="speak-button-dbf59901-ee3c-4097-87f1-b66e68b900ba"
+                                                                            className="visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition">
+                                                                            <Read />
+                                                                        </button></div>
                                                                     <div aria-label="Trả lời tốt" className="flex"><button
                                                                         className="visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg  dark:hover:text-white hover:text-black transition disabled:cursor-progress disabled:hover:bg-transparent"><Like /></button></div>
                                                                     <div aria-label="Trả lời KHÔNG tốt" className="flex"><button

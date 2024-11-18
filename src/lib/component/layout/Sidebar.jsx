@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
+import SettingLayout from './setting';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import PencilSquare from '../icons/PencilSquare';
 import MenuLines from '../icons/MenuLines';
@@ -9,16 +10,17 @@ import MagnifyingGlass from '../icons/MagnifyingGlass';
 import ChevronDown from '../icons/ChevronDown';
 import Optinal from '../icons/Optinal';
 import UserTab from './UserTab';
-const Sidebar = ({ isSidebarOpen, toggleSidebar })=> {
+import ScrollableBox from '../file/listfile';
+const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
   const [isUserMenuOpen, setUserMenuOpen] = useState(false);
   const sidebarRef = useRef(null);
   const userMenuRef = useRef(null)
   const { id } = useParams();
   const [chatinfo, setChatinfo] = useState([]);
+
   const toggleSidebarMenu = () => {
     setUserMenuOpen(!isUserMenuOpen);
   };
-
   const handleClickOutside = (event) => {
     if (userMenuRef.current && !userMenuRef.current.contains(event.target)) {
       setUserMenuOpen(false);
@@ -45,15 +47,13 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar })=> {
               id="sidebar-new-chat-button"
               className="flex flex-1 justify-between rounded-lg px-2 h-full hover:bg-gray-100 dark:hover:bg-gray-900 transition"
               href="/"
-              draggable="false"
-            >
+              draggable="false">
               <div className="self-center mx-1.5">
                 <img
                   crossOrigin="anonymous"
-                  src="../imgs/favicon.png"
+                  src="http://localhost:3000/imgs/Bricktech.png"
                   className="size-6 -translate-x-1.5 rounded-full"
-                  alt="logo"
-                />
+                  alt="logo"/>
               </div>
               <div className="self-center font-medium text-sm text-gray-850 dark:text-white font-primary">
                 Tạo chat mới
@@ -68,47 +68,11 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar })=> {
               </div>
             </button>
           </div>
-          <div className="px-2.5 flex justify-center text-gray-800 dark:text-gray-200">
-            <a
-              className="flex-grow flex space-x-3 rounded-lg px-2.5 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
-              href="/workspace/model"
-              draggable="false"
-            >
-              <div className="self-center">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth="2"
-                  stroke="currentColor"
-                  className="size-[1.1rem]"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M13.5 16.875h3.375m0 0h3.375m-3.375 0V13.5m0 3.375v3.375M6 10.5h2.25a2.25 2.25 0 0 0 2.25-2.25V6a2.25 2.25 0 0 0-2.25-2.25H6A2.25 2.25 0 0 0 3.75 6v2.25A2.25 2.25 0 0 0 6 10.5Zm0 9.75h2.25A2.25 2.25 0 0 0 10.5 18v-2.25a2.25 2.25 0 0 0-2.25-2.25H6a2.25 2.25 0 0 0-2.25 2.25V18A2.25 2.25 0 0 0 6 20.25Zm9.75-9.75H18a2.25 2.25 0 0 0 2.25-2.25V6A2.25 2.25 0 0 0 18 3.75h-2.25A2.25 2.25 0 0 0 13.5 6v2.25a2.25 2.25 0 0 0 2.25 2.25Z"
-                  ></path>
-                </svg>
-              </div>
-              <div className="flex self-center">
-                <div className="self-center font-medium text-sm font-primary">
-                  Workspace
-                </div>
-              </div>
-            </a>
-          </div>
-          <div className="relative ">
-            <div className="absolute z-40 right-4 top-1">
-              <div aria-label="New folder" className="flex">
-                <button className="p-1 rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-950 dark:hover:bg-gray-900 transition">
-                  <Plus />
-                </button>
-              </div>
-            </div>
+         
+          <div className="relative ">        
             <div
               className="px-2 mb-1 flex justify-center space-x-2 relative z-10"
-              id="search-container"
-            >
+              id="search-container">
               <div className="flex w-full rounded-xl" id="chat-search">
                 <div className="self-center pl-3 py-2 rounded-l-xl bg-transparent">
                   <MagnifyingGlass />
@@ -125,38 +89,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar })=> {
               <div className="relative px-2" draggable="true">
                 <div className="w-full">
                   <div className="w-full cursor-pointer">
-                    <div>
-                      <div className="w-full group">
-                        <div id="folder-898563dc-f187-41c6-ac9f-409dd282a85b-button"
-                          className="relative w-full py-1.5 px-2 rounded-md flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-500 font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition">
-                          <div className="text-gray-300 dark:text-gray-600">
-                            <ChevronDown></ChevronDown>
-                          </div>
-                          <div className="translate-y-[0.5px] flex-1 justify-start text-start line-clamp-1">
-                            Untitled
-                          </div>{' '}
-                          <div className="absolute z-10 right-2 invisible group-hover:visible self-center flex items-center dark:text-gray-300">
-                            <div
-                              aria-controls="i-px6frDDM"
-                              aria-expanded="false"
-                              data-state="closed"
-                              id="wQIKC3wriq"
-                              tabIndex="0"
-                              data-melt-dropdown-menu-trigger=""
-                              data-menu-trigger=""
-                              type="button"
-                            >
-                              <div aria-label="Thêm" className="flex">
-                                <button className="p-0.5 dark:hover:bg-gray-850 rounded-lg touch-auto">
-                                  <Optinal />
-                                </button>
-                              </div>
-                            </div>
-                            <div slot="content"></div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
+                   
                   </div>
                 </div>
               </div>
@@ -169,7 +102,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar })=> {
                           <div className="text-gray-300 dark:text-gray-600">
                             <ChevronDown />
                           </div>
-                          <div className="translate-y-[0.5px]">All chats</div>
+                          <div className="translate-y-[0.5px]">Tất cả cuộc trò chuyện</div>
                         </button>
                       </div>
                     </div>
@@ -187,6 +120,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar })=> {
               </div>
             </div>
           </div>
+          <ScrollableBox />
           <div className="px-2">
             <div className="flex flex-col font-primary">
               <div
@@ -202,7 +136,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar })=> {
                 <button className="flex items-center rounded-xl py-2.5 px-2.5 w-full hover:bg-gray-100 dark:hover:bg-gray-900 transition">
                   <div className="self-center mr-3">
                     <img
-                      src="../imgs/avt.png"
+                      src="http://localhost:3000/imgs/Bricktech.png"
                       className="max-w-[30px] object-cover rounded-full"
                       alt="User profile"
                     />

@@ -65,7 +65,7 @@ const Infoknow = function () {
         if (storedFilesInfo) {
             setFilesInfo(JSON.parse(storedFilesInfo));
         }
-        
+
     }, []);
     return (
         <>
@@ -79,12 +79,10 @@ const Infoknow = function () {
                     onChange={handleFileChange}
                     ref={fileInputRef}
                     multiple=""
-                    hidden=""
-                />
+                    hidden="" />
                 <div
                     className="flex flex-col w-full h-full max-h-[100dvh]"
-                    id="collection-container"
-                >
+                    id="collection-container">
                     <div className="flex flex-row flex-1 h-full max-h-full pb-2.5">
                         <div
                             id="NgK2K5rbhk"
@@ -97,15 +95,13 @@ const Infoknow = function () {
                                 height: '100%',
                                 overflow: 'hidden',
                                 width: '100%',
-                            }}
-                        >
+                            }}>
                             <div
                                 data-pane=""
                                 data-pane-id="RYykOb2KRn"
                                 data-pane-group-id="NgK2K5rbhk"
                                 className="h-full"
-                                style={{ flex: '25 1 0px', overflow: 'hidden' }}
-                            >
+                                style={{ flex: '25 1 0px', overflow: 'hidden' }}>
                                 <div className="flex-shrink-0 flex py-2 rounded-2xl border border-gray-50 h-full dark:border-gray-850">
                                     <div className="flex flex-col w-full space-x-2 rounded-lg h-full">
                                         <div className="w-full h-full flex flex-col">
@@ -116,19 +112,17 @@ const Infoknow = function () {
                                                             xmlns="http://www.w3.org/2000/svg"
                                                             viewBox="0 0 20 20"
                                                             fill="currentColor"
-                                                            className="w-4 h-4"
-                                                        >
+                                                            className="w-4 h-4">
                                                             <path
-                                                                fill-rule="evenodd"
+                                                                fillRule="evenodd"
                                                                 d="M9 3.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM2 9a7 7 0 1112.452 4.391l3.328 3.329a.75.75 0 11-1.06 1.06l-3.329-3.328A7 7 0 012 9z"
-                                                                clip-rule="evenodd"
+                                                                clipRule="evenodd"
                                                             ></path>
                                                         </svg>
                                                     </div>{' '}
                                                     <input
                                                         className="w-full text-sm pr-4 py-1 rounded-r-xl outline-none bg-transparent"
-                                                        placeholder="Search Collection"
-                                                    />
+                                                        placeholder="Search Collection" />
                                                     <div>
                                                         <button
                                                             aria-controls="G4pDQaK7gn"
@@ -138,8 +132,7 @@ const Infoknow = function () {
                                                             tabIndex="0"
                                                             data-melt-dropdown-menu-trigger=""
                                                             data-menu-trigger=""
-                                                            type="button"
-                                                        >
+                                                            type="button">
                                                             <div aria-label="Add Content" className="flex">
                                                                 <button onClick={handleButtonClick}
                                                                     className="p-1.5 rounded-xl hover:bg-gray-100 dark:bg-gray-850 dark:hover:bg-gray-800 transition font-medium text-sm flex items-center space-x-1"
