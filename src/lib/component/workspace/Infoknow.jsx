@@ -36,7 +36,7 @@ const Infoknow = function () {
         setFilesInfo((prevFiles) => [...prevFiles, ...newFilesInfo.filter(Boolean)]);
         const updatedFilesInfo = [...filesInfo, ...newFilesInfo.filter(Boolean)];
         setFilesInfo(updatedFilesInfo);
-        localStorage.setItem('uploadedFiles', JSON.stringify(updatedFilesInfo));
+        // localStorage.setItem('uploadedFiles', JSON.stringify(updatedFilesInfo));
     };
     const handleFileClick = async (index) => {
         setSelectedFileIndex(index);
@@ -54,18 +54,12 @@ const Infoknow = function () {
         }
     };
     const handleFileDelete = (index) => {
-        const updatedFilesInfo = filesInfo.filter((_, i) => i !== index);
-        setFilesInfo(updatedFilesInfo);
-        localStorage.setItem('uploadedFiles', JSON.stringify(updatedFilesInfo));
+        // const updatedFilesInfo = filesInfo.filter((_, i) => i !== index);
+        // setFilesInfo(updatedFilesInfo);
+        // localStorage.setItem('uploadedFiles', JSON.stringify(updatedFilesInfo));
     };
-    console.log("select file index:", selectedFileIndex);
-    console.log("file info:", filesInfo[selectedFileIndex]);
     useEffect(() => {
-        const storedFilesInfo = localStorage.getItem('uploadedFiles');
-        if (storedFilesInfo) {
-            setFilesInfo(JSON.parse(storedFilesInfo));
-        }
-
+       
     }, []);
     return (
         <>

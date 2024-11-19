@@ -26,11 +26,24 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
       setUserMenuOpen(false);
     }
   };
-  const chats = JSON.parse(localStorage.getItem('chats')) || [];
+  let chats;
+  try {
+    chats = JSON.parse(localStorage.getItem('chats')) || [];
+  } catch (e) {
+    console.error('Dữ liệu trong localStorage không hợp lệ:', e);
+    chats = [];
+  }
   const selectedChat = chats.find(chat => chat.id === parseInt(id, 10));
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
-    const storedChats = JSON.parse(localStorage.getItem('chats')) || [];
+    let storedChats = [];
+    try {
+      const chats = localStorage.getItem('chats');
+      storedChats = chats ? JSON.parse(chats) : [];
+    } catch (error) {
+      console.error('Dữ liệu trong localStorage không hợp lệ:', error);
+      storedChats = []; // Khởi tạo giá trị mặc định nếu có lỗi
+    }
     setChatinfo(storedChats);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -53,7 +66,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
                   crossOrigin="anonymous"
                   src="http://localhost:3000/imgs/Bricktech.png"
                   className="size-6 -translate-x-1.5 rounded-full"
-                  alt="logo"/>
+                  alt="logo" />
               </div>
               <div className="self-center font-medium text-sm text-gray-850 dark:text-white font-primary">
                 Tạo chat mới
@@ -61,22 +74,22 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
               <div className="self-center ml-auto">
                 <PencilSquare />
               </div>
-            </a>{' '}
+            </a>
             <button className="cursor-pointer px-2 py-2 flex rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition" onClick={toggleSidebar}>
               <div className="m-auto self-center" >
                 <MenuLines></MenuLines>
               </div>
             </button>
           </div>
-         
-          <div className="relative ">        
+
+          <div className="relative ">
             <div
               className="px-2 mb-1 flex justify-center space-x-2 relative z-10"
               id="search-container">
               <div className="flex w-full rounded-xl" id="chat-search">
                 <div className="self-center pl-3 py-2 rounded-l-xl bg-transparent">
                   <MagnifyingGlass />
-                </div>{' '}
+                </div>
                 <input
                   className="w-full rounded-r-xl py-1.5 pl-2.5 pr-4 text-sm bg-transparent dark:text-gray-300 outline-none"
                   placeholder="Tìm kiếm"
@@ -89,7 +102,7 @@ const Sidebar = ({ isSidebarOpen, toggleSidebar }) => {
               <div className="relative px-2" draggable="true">
                 <div className="w-full">
                   <div className="w-full cursor-pointer">
-                   
+
                   </div>
                 </div>
               </div>

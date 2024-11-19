@@ -38,19 +38,19 @@ const Selector = React.forwardRef(({ style }, ref) => {
                 tabIndex="-1"
                 data-melt-dropdown-menu=""
                 data-menu-content=""
-                className=" z-40 w-[32rem] max-w-[calc(100vw-1rem)] justify-start rounded-xl  bg-white dark:bg-gray-850 dark:text-white shadow-lg  outline-none"
+                className="z-40 w-full sm:w-[32rem] max-w-[calc(100vw-1rem)] max-w-full justify-start rounded-xl bg-white dark:bg-gray-850 dark:text-white shadow-lg outline-none"
                 data-melt-menu-id="tzMi0AiYNS"
                 data-escapee=""
                 data-side="bottom"
                 data-align="start"
-                style={{ position: 'absolute', top: '45px', left: '272px' }}>
+                style={{ position: 'absolute', top: '6%', left: '2%' }}>
                 <div className="flex items-center gap-2.5 px-5 mt-3.5 mb-3">
                     <MagnifyingGlass />
                     <input
                         id="model-search-input"
                         className="w-full text-sm bg-transparent outline-none"
                         placeholder="Tìm kiếm luật"
-                        autocomplete="off"
+                        autoComplete="off"
                         value={searchTerm}
                         onChange={handleSearchChange}
                     />

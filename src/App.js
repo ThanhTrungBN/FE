@@ -22,11 +22,7 @@ const App = () => {
         <Route path="/setting" element={<SettingLayout />} />
         <Route path="/register" element={<Register />} />
         <Route path="/" element={<Page isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />
-        <Route path="/chat/:id" element={<Chatbox isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />
-        <Route path="/workspace/knowledge" element={<Knowkedges isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />
-        <Route path="/workspace/model" element={<Models isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />
-        <Route path="/workspace/create" element={<Addknowledge isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />
-        <Route path="/workspace/knowledge/:id" element={<Infoknowledge isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />
+        <Route path="/chat/:id" element={<Chatbox isSidebarOpen={isSidebarOpen} toggleSidebar={toggleSidebar} />} />     
       </Routes>
     </Router>
   );

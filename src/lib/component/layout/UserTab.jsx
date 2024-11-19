@@ -18,7 +18,7 @@ const UserTab = React.forwardRef(({ style }, ref) => {
                 aria-labelledby="th8f8f7qHQ"
                 data-state="open" data-portal="" tabIndex="-1" data-melt-dropdown-menu="" data-menu-content=""
                 className="w-full max-w-[240px] text-sm rounded-xl px-1 py-1.5 z-50 bg-white dark:bg-gray-850 dark:text-white shadow-lg font-primary"
-                data-melt-menu-id="1eV8rSjjHx" data-escapee="" data-side="top" data-align="start" style={{ position: 'absolute', bottom: '10%', left: '8px', ...style }}>
+                data-melt-menu-id="1eV8rSjjHx" data-escapee="" data-side="top" data-align="start" style={{ position: 'absolute', bottom: '10%', right: '8px', ...style }}>
                 <button onClick={toggleComponentVisibility} className="flex rounded-md py-2 px-3 w-full hover:bg-gray-50 dark:hover:bg-gray-800 transition" >
                     <div className="self-center mr-3">
                         <Cog6 />

@@ -43,7 +43,7 @@ const Navbar = function ({ isSidebarOpen, toggleSidebar }) {
         };
     }, [isDarkMode]);
     const customStyle = {
-        position: 'absolute', top: '7%', left: '83%', height: '35%'
+        position:'absolute',top: '7%',height:'36%',right:0
     }
     return (
         <>

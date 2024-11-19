@@ -26,9 +26,15 @@ const ChatMessage = function () {
             const chatId = "1";
             const mockChatData = mockData();
             const matchedData = mockChatData.messages.find(item => item.question === inputValue);
-            const newResponse = matchedData ? matchedData.answer : "Xin lỗi, tôi không hiểu câu hỏi của bạn.";
+            const newResponse = matchedData ? matchedData.answer : "Tôi không hiểu câu hỏi của bạn.";
             const newMessage = { question: inputValue, answer: newResponse };
-            let chats = JSON.parse(localStorage.getItem('chats')) || [];
+            let chats;
+            try {
+                chats = JSON.parse(localStorage.getItem('chats')) || [];
+            } catch (e) {
+                console.error('Dữ liệu trong localStorage không hợp lệ:', e);
+                chats = [];
+            }
             const chatIndex = chats.findIndex(chat => chat.id === chatId);
             if (chatIndex >= 0) {
                 chats[chatIndex].messages.push(newMessage);
@@ -55,7 +61,14 @@ const ChatMessage = function () {
         left: '5%'
     }
     useEffect(() => {
-        const storedMessages = JSON.parse(localStorage.getItem('chats')) || [];
+        let storedMessages = [];
+        try {
+          const chats = localStorage.getItem('chats');
+          storedMessages = chats ? JSON.parse(chats) : [];
+        } catch (error) {
+          console.error('Dữ liệu trong localStorage không hợp lệ:', error);
+          storedMessages = [];
+        }        
         const chatId = "1";
         const chat = storedMessages.find(chat => chat.id === chatId);
         setMessages(chat ? chat.messages : []);
@@ -78,7 +91,6 @@ const ChatMessage = function () {
                                                         id="message-f3df74b9-a9eb-41ea-834b-38149062beba">
                                                         <div className="flex-auto w-0 max-w-full pl-1">
                                                             <div className="chat-user w-full min-w-full markdown-prose">
-                                                                {console.log(msg.fileInfo)}
                                                                 {msg.fileInfo && msg.fileInfo.length > 0 && (
                                                                     msg.fileInfo.map((fileInfo, fileIndex) => (
                                                                         <div className='mt-2.5 mb-1 w-full flex flex-col justify-end gap-1 flex-wrap'>

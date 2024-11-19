@@ -1,12 +1,12 @@
 const mockData = () => {
-    const chatId = "1"; // Tạo ID duy nhất
+    const chatId = "1";
     const data = [
         {
-            question: "Bạn có khỏe không?",
-            answer: "Tôi khỏe, cảm ơn bạn! Còn bạn thì sao?",
+            question: "Bố tôi tên là gì",
+            answer: "Bố bạn tên là Vương",
         },
         {
-            question: "Bạn có thể làm gì?",
+            question: "hello",
             answer: "Tôi có thể giúp bạn với nhiều thứ, từ việc trả lời câu hỏi đến hỗ trợ học tập.",
         },
         {

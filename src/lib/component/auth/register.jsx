@@ -10,8 +10,7 @@ const Register = function () {
               crossOrigin="anonymous"
               src="../imgs/favicon.png"
               className="w-8 rounded-full"
-              alt="logo"
-            />
+              alt="logo"/>
           </div>
         </div>
       </div>
@@ -33,7 +32,7 @@ const Register = function () {
                   <input
                     type="text"
                     className="px-5 py-3 rounded-2xl w-full text-sm outline-none border dark:border-none dark:bg-gray-900"
-                    autocomplete="name"
+                    autoComplete="name"
                     placeholder="Nhập Họ và Tên của bạn"
                     required=""
                   />
@@ -44,7 +43,7 @@ const Register = function () {
                   <input
                     type="email"
                     className="px-5 py-3 rounded-2xl w-full text-sm outline-none border dark:border-none dark:bg-gray-900"
-                    autocomplete="email"
+                    autoComplete="email"
                     placeholder="Nhập Email của bạn"
                     required=""
                   />
@@ -55,7 +54,7 @@ const Register = function () {
                     type="password"
                     className="px-5 py-3 rounded-2xl w-full text-sm outline-none border dark:border-none dark:bg-gray-900"
                     placeholder="Nhập Mật khẩu của bạn"
-                    autocomplete="current-password"
+                    autoComplete="current-password"
                     required=""
                   />
                 </div>

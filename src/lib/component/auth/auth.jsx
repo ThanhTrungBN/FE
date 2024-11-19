@@ -47,7 +47,7 @@ const Auth = function () {
                   <input
                     type="email"
                     className="px-5 py-3 rounded-2xl w-full text-sm outline-none border dark:border-none dark:bg-gray-900"
-                    autocomplete="email"
+                    autoComplete="email"
                     placeholder="Nhập Email của bạn"
                     value={username} onChange={(e) => setUsername(e.target.value)}
                     required=""
@@ -60,7 +60,7 @@ const Auth = function () {
                     className="px-5 py-3 rounded-2xl w-full text-sm outline-none border dark:border-none dark:bg-gray-900"
                     placeholder="Nhập Mật khẩu của bạn"
                     value={password} onChange={(e) => setPassword(e.target.value)}
-                    autocomplete="current-password"
+                    autoComplete="current-password"
                     required=""
                   />
                 </div>
@@ -68,8 +68,7 @@ const Auth = function () {
               <div className="mt-5">
                 <button
                   className="bg-gray-900 hover:bg-gray-800 w-full rounded-2xl text-white font-medium text-sm py-3 transition"
-                  type="submit"
-                >
+                  type="submit">
                   Đăng nhập
                 </button>
                 <div className="mt-4 text-sm text-center">

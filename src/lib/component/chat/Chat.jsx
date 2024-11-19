@@ -16,8 +16,6 @@ const Chat = function () {
     if (event && event.target) {
       const value = event.target.value;
       toggleAdviceList(value);
-    } else {
-      console.error('Event or event.target is undefined');
     }
     console.log(inputValue);
     if (!inputValue.trim()) {
@@ -36,15 +34,22 @@ const Chat = function () {
     setInputValue(inputValue);
     setIsAdviceVisible(inputValue !== "");
   };
+  // index.js hoặc App.js
   const handleSendMessage = () => {
     if (inputValue.trim()) {
       const chatId = `1`;
       const newMessage = {
         question: inputValue,
-        answer: "Tôi có thể giúp gì cho bạn?",
+        answer: "Tôi có thể giúp gì bạn?",
         fileInfo: filesInfo.length > 0 ? filesInfo : [],
       };
-      let chats = JSON.parse(localStorage.getItem('chats')) || [];
+      let chats;
+      try {
+        chats = JSON.parse(localStorage.getItem('chats')) || [];
+      } catch (e) {
+        console.error('Dữ liệu trong localStorage không hợp lệ:', e);
+        chats = [];
+      }
       const chatExists = chats.find(chat => chat.id === chatId);
       if (!chatExists) {
         chats.push({ id: chatId, messages: [] });
@@ -62,7 +67,6 @@ const Chat = function () {
 
     }
   };
-  console.log(JSON.parse(localStorage.getItem('uploadedFiles')))
   const handleFileChange = async (event) => {
     const files = Array.from(event.target.files);
     const newFilesInfo = files.map((file) => ({
@@ -76,6 +80,7 @@ const Chat = function () {
     if (inputValue === "") {
       setIsAdviceVisible(false);
     }
+
   }, [isAdviceVisible, inputValue]);
   return (
     <>

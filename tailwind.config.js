@@ -4,6 +4,9 @@ export default {
   content: ['./src/**/*.{html,js,jsx,svelte,ts}'],
   theme: {
     extend: {
+      screens: {
+        'sm': '640px',
+      },
       colors: {
         gray: {
           50: '#f9f9f9',
